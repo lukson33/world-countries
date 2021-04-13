@@ -119,7 +119,7 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    path,
+    paths,
     fallback: false,
   };
 };
