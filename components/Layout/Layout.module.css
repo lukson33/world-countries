@@ -16,6 +16,17 @@
   margin-bottom: 32px;
 }
 
+.heading {
+  font-weight: 700;
+  font-size: 30px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.heading span {
+  color: var(--primary-color);
+}
+
 .footer {
   margin-top: 32px;
   text-align: center;
@@ -33,4 +44,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }

@@ -1,15 +1,16 @@
-import {
-  KeyboardArrowUpRounded,
-  KeyboardArrowDownRounded,
-} from "@material-ui/icons";
-import styles from "./CountriesTable.module.css";
-import { useState } from "react";
 import Link from "next/link";
+import {
+  KeyboardArrowDownRounded,
+  KeyboardArrowUpRounded,
+} from "@material-ui/icons";
+import { useState } from "react";
+import styles from "./CountriesTable.module.css";
 
 const orderBy = (countries, value, direction) => {
   if (direction === "asc") {
     return [...countries].sort((a, b) => (a[value] > b[value] ? 1 : -1));
   }
+
   if (direction === "desc") {
     return [...countries].sort((a, b) => (a[value] > b[value] ? -1 : 1));
   }
@@ -17,10 +18,11 @@ const orderBy = (countries, value, direction) => {
   return countries;
 };
 
-const SortArrow = (direction) => {
+const SortArrow = ({ direction }) => {
   if (!direction) {
     return <></>;
   }
+
   if (direction === "desc") {
     return (
       <div className={styles.heading_arrow}>
@@ -60,6 +62,8 @@ const CountriesTable = ({ countries }) => {
   return (
     <div>
       <div className={styles.heading}>
+        <div className={styles.heading_flag}></div>
+
         <button
           className={styles.heading_name}
           onClick={() => setValueAndDirection("name")}
@@ -71,7 +75,7 @@ const CountriesTable = ({ countries }) => {
 
         <button
           className={styles.heading_population}
-          onClick={() => setValueAndDirection("populaton")}
+          onClick={() => setValueAndDirection("population")}
         >
           <div>Population</div>
 
@@ -106,9 +110,12 @@ const CountriesTable = ({ countries }) => {
               <img src={country.flag} alt={country.name} />
             </div>
             <div className={styles.name}>{country.name}</div>
+
             <div className={styles.population}>{country.population}</div>
+
             <div className={styles.area}>{country.area || 0}</div>
-            <div className={styles.gini}>{country.gini || 0}%</div>
+
+            <div className={styles.gini}>{country.gini || 0} %</div>
           </div>
         </Link>
       ))}
